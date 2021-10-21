@@ -67,11 +67,11 @@ int main() {
 	grafo.adicionarAresta(1, 2);
 	grafo.adicionarAresta(1, 3);
 	grafo.adicionarAresta(2, 5);
-    grafo.adicionarAresta(3, 2);
+   	grafo.adicionarAresta(3, 2);
 	grafo.adicionarAresta(3, 5);
 	grafo.adicionarAresta(5, 4);
-    grafo.adicionarAresta(5, 4);
-    grafo.adicionarAresta(4, 2);
+    	grafo.adicionarAresta(5, 4);
+    	grafo.adicionarAresta(4, 2);
 
 	grafo.bfs(0, 3);
 
