@@ -5,6 +5,7 @@
 using namespace std;
 
 class Grafo {
+private:
 	int V; // número de vértices
 	list<int> *adj; // ponteiro para um array contendo as listas de adjacências
 
@@ -26,14 +27,14 @@ void Grafo::adicionarAresta(int v1, int v2) {
 	adj[v1].push_back(v2);
 }
 
-void Grafo::bfs(int verticeOrigem, int verticeParada)
-{
+void Grafo::bfs(int verticeOrigem, int verticeParada) {
 	queue<int> fila;
 	bool visitados[V]; // Vetor de visitados
 
-	for(int i = 0; i < V; i++)
+	for(int i = 0; i < V; i++) {
 		visitados[i] = false;
-
+	}
+		
 	cout << "Visitando vertice " << verticeOrigem << " ...\n";
 	visitados[verticeOrigem] = true; // Marca como visitado
 
@@ -67,7 +68,7 @@ int main() {
 	grafo.adicionarAresta(1, 2);
 	grafo.adicionarAresta(1, 3);
 	grafo.adicionarAresta(2, 5);
-   	grafo.adicionarAresta(3, 2);
+    	grafo.adicionarAresta(3, 2);
 	grafo.adicionarAresta(3, 5);
 	grafo.adicionarAresta(5, 4);
     	grafo.adicionarAresta(5, 4);
