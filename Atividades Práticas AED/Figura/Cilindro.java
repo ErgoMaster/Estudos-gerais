@@ -23,7 +23,7 @@ public class Cilindro extends Circulo {
     // Imprimir as informações do cilindro
     public String toString() {
         return super.toString() +
-        "\nÁrea total = " + areaCilindro() +
+        "\nArea total = " + areaCilindro() +
         "\nVolume = " + volumeCilindro();
     }
 }

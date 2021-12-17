@@ -10,7 +10,7 @@ public class Teste {
         int y = reader.nextInt();
 
         // Teste do círculo
-        System.out.println("\nDigite o raio do círculo");
+        System.out.println("\nDigite o raio do circulo");
         double raio = reader.nextDouble();
         Circulo circulo = new Circulo(raio, x, y);
         System.out.println(circulo.toString());
