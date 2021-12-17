@@ -19,4 +19,11 @@ public class Cilindro extends Circulo {
     // Métodos para cálculo de área e volume do cilindro
     public double areaCilindro() { return (2 * areaCirculo() + 2 * Math.PI * getRaio() * getAltura()); }
     public double volumeCilindro() { return (areaCirculo() * getAltura()); }
+
+    // Imprimir as informações do cilindro
+    public String toString() {
+        return super.toString() +
+        "\nÁrea total = " + areaCilindro() +
+        "\nVolume = " + volumeCilindro();
+    }
 }
