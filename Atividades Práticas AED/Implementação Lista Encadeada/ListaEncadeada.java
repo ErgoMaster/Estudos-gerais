@@ -10,13 +10,34 @@ public class ListaEncadeada {
         Object data;
         Element next;
 
-        Element (Object d, Element n) {
-            data = d;
-            next = n;
+        Element (Object data, Element next) {
+            this.data = data;
+            this.next = next;
         }
 
-        public Object getData(){ return data; }
-        public Element getNext(){ return next; }
+        public Object getData() { return data; }
+        public Element getNext() { return next; }
+
+        public void inserirDepois(Object item) {
+            next = new Element(item, next);
+
+            if(tail == this) { tail = next; }
+        }
+
+        public void inserirAntes(Object item) {
+            Element temp = new Element(item, this);
+
+            if(this == head) { head = temp; }
+            else {
+                Element tempAnterior = head;
+
+                while(tempAnterior != null && tempAnterior != this) {
+                    tempAnterior = tempAnterior.next;
+                }
+
+                tempAnterior.next = temp;
+            }
+        }
     }
     
     public void fazVazia() {
@@ -74,8 +95,20 @@ public class ListaEncadeada {
             ponteiro = ponteiro.next;
         }
         
-        if(ponteiro == null) {
-            throw new ObjetoNaoEncontradoException();
+        if(ponteiro == null) { throw new ObjetoNaoEncontradoException(); }
+
+        if(ponteiro == head) { head = ponteiro.next; } 
+        else { ponteiroAnterior.next = ponteiro.next; }
+
+        if(ponteiro == tail) { tail = ponteiroAnterior; }
+    }
+
+    public void imprimirLista() {
+        Element temp = head;
+
+        while(temp != null) {
+            System.out.println(temp);
+            temp = temp.next;
         }
     }
 }
