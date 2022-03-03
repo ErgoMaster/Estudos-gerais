@@ -7,7 +7,7 @@ public class ListaEncadeada {
     public final class Element { 
         Object data;
         Element next;
-        Element () {}
+
         Element (Object data, Element next) {
             this.data = data;
             this.next = next;
