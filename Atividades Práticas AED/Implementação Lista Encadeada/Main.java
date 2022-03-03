@@ -46,7 +46,7 @@ public class Main {
             System.out.println("\n");
             System.out.println("-- REMOVER ELEMENTOS --");
             lista.imprimirLista(); // Lista: 9 - 5 - 4 - 12 
-        } catch (Exception e) {
+        } catch (ObjetoNaoEncontradoException e) {
             System.out.println("Objeto não encontrado");
         }
 

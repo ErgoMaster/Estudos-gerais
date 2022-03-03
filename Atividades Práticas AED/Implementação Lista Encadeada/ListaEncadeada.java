@@ -17,7 +17,7 @@ public class ListaEncadeada {
         public Element getNext() { return next; }
 
         public void inserirDepois(Object item) {
-            next = new Element(item, next);
+            next = new Element(item, this.next);
 
             if(tail == this) { tail = next; }
         }
@@ -49,12 +49,12 @@ public class ListaEncadeada {
     public boolean estaVazia() { return (head == null); }
     
     public Object getPrimeiro() throws ListaVaziaException {
-        if (head == null) { throw new ListaVaziaException(); }
+        if(estaVazia()) { throw new ListaVaziaException(); }
         else { return head.data; }
     }
 
     public Object getUltimo() throws ListaVaziaException {
-        if (tail == null) { throw new ListaVaziaException(); }
+        if(estaVazia()) { throw new ListaVaziaException(); }
         else { return tail.data; }
     }
     
