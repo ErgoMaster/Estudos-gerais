@@ -1,5 +1,3 @@
-package implementaçãolistaencadeada;
-
 public class ListaEncadeada {
     private Element head;
     private Element tail;
@@ -9,7 +7,7 @@ public class ListaEncadeada {
     public final class Element { 
         Object data;
         Element next;
-
+        Element () {}
         Element (Object data, Element next) {
             this.data = data;
             this.next = next;
@@ -80,7 +78,7 @@ public class ListaEncadeada {
         if(this != lista1) {
             this.fazVazia();
             
-            for(Element i = this.head; i != null; i = i.next) {
+            for(Element i = lista1.head; i != null; i = i.next) {
                 this.inserirFim(i.data);
             }
         }
@@ -107,7 +105,7 @@ public class ListaEncadeada {
         Element temp = head;
 
         while(temp != null) {
-            System.out.println(temp);
+            System.out.println(temp.data);
             temp = temp.next;
         }
     }
