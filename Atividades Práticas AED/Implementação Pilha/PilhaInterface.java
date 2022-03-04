@@ -1,5 +1,3 @@
-package implemtação.pilha;
-
 public interface PilhaInterface  {
     void fazVazia();
     boolean estaVazia();

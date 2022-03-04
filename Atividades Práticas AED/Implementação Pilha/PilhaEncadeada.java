@@ -1,5 +1,3 @@
-package implemtação.pilha;
-
 public class PilhaEncadeada implements PilhaInterface {
     private ListaEncadeada lista;
     private int count;

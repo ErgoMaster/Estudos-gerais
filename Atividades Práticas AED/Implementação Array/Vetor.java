@@ -54,7 +54,7 @@ public class Vetor {
         if(data.length == 0) { throw new VetorVazioException(); }
 
         for(int i = 0; i < data.length; i++) {
-            System.out.println(data[i]);
+            System.out.println(this.getElemento(i));
         }
     }
 }
