@@ -17,9 +17,9 @@ public class ListaEncadeada {
         public Element getNext() { return next; }
 
         public void inserirDepois(Object item) {
-            next = new Element(item, this.next);
+            Element temp = new Element(item, next);
 
-            if(tail == this) { tail = next; }
+            if(tail == this) { tail = temp; }
         }
 
         public void inserirAntes(Object item) {
