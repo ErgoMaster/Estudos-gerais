@@ -1,5 +1,3 @@
-package implementacao.lista.duplamente.encadeada;
-        
 public class ListaDuplamenteEncadeada {
     private Element head;
     private Element tail;
