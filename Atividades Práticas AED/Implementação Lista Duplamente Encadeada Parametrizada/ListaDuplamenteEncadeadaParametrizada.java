@@ -1,14 +1,15 @@
 public class ListaDuplamenteEncadeadaParametrizada<T> {
-    private T head;
-    private T tail;
+    private Element head;
+    private Element tail;
     
-    public ListaDuplamenteEncadeada() {}
+    public ListaDuplamenteEncadeadaParametrizada() {}
     
     public final class Element {
         T data;
-        T next, prev;
+        Element next;
+        Element prev;
         
-        Element(T data, T prev, T next) {
+        Element(T data, Element prev, Element next) {
             this.data = data;
             this.prev = prev;
             this.next = next;
@@ -31,8 +32,8 @@ public class ListaDuplamenteEncadeadaParametrizada<T> {
         }
     }
     
-    public T getTail() { return tail; }
-    public T getHead() { return head; }
+    public Element getTail() { return tail; }
+    public Element getHead() { return head; }
     
     public boolean estaVazia() { return (head == null); }
     
