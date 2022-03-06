@@ -2,12 +2,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("--- Testes da lista duplamente encadeada parametrizada ---\n");
 
-        ListaDuplamenteEncadeadaParametrizada<Integer> lista = new ListaDuplamenteEncadeadaParametrizada<Integer>();
+        ListaParametrizada<Integer> lista = new ListaParametrizada<Integer>();
 
         // Inserir um elemento no inicio da lista
-        lista.inserirInicio(5);
-        lista.inserirInicio(10);
         lista.inserirInicio(9);
+        lista.inserirInicio(13);
+        lista.inserirInicio(14);
 
         System.out.println("-- INSERIR INICIO --");
         lista.imprimirLista(); // Lista: 9 - 10 - 5
@@ -47,7 +47,7 @@ public class Main {
             System.out.println("-- REMOVER ELEMENTOS --");
             lista.imprimirLista(); // Lista: 9 - 5 - 4 - 12 
         } catch (ObjetoNaoEncontradoException e) {
-            System.out.println("Objeto não encontrado");
+            System.out.println("Objeto nao encontrado");
         }
     }
 }

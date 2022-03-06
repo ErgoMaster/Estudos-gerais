@@ -1,21 +1,20 @@
-public class ListaDuplamenteEncadeadaParametrizada<T> {
+public class ListaDupla {
     private Element head;
     private Element tail;
     
-    public ListaDuplamenteEncadeadaParametrizada() {}
+    public ListaDupla() {}
     
     public final class Element {
-        T data;
-        Element next;
-        Element prev;
+        Object data;
+        Element next, prev;
         
-        Element(T data, Element prev, Element next) {
+        Element(Object data, Element prev, Element next) {
             this.data = data;
             this.prev = prev;
             this.next = next;
         }
         
-        public void inserirDepois(T item) {
+        public void inserirDepois(Object item) {
             Element temp = new Element(item, this, next);
             next = temp;
             
@@ -23,7 +22,7 @@ public class ListaDuplamenteEncadeadaParametrizada<T> {
             else { temp.next.prev = temp; }
         }
 
-        public void inserirAntes(T item) {
+        public void inserirAntes(Object item) {
             Element temp = new Element(item, prev, this);
             prev = temp;
             
@@ -37,17 +36,17 @@ public class ListaDuplamenteEncadeadaParametrizada<T> {
     
     public boolean estaVazia() { return (head == null); }
     
-    public T getPrimeiro() throws ListaVaziaException {
+    public Object getPrimeiro() throws ListaVaziaException {
         if(estaVazia()) { throw new ListaVaziaException(); }
         else { return head.data; }
     }
 
-    public T getUltimo() throws ListaVaziaException {
+    public Object getUltimo() throws ListaVaziaException {
         if(estaVazia()) { throw new ListaVaziaException(); }
         else { return tail.data; }
     }
      
-    public void inserirInicio(T item) {
+    public void inserirInicio(Object item) {
         Element temp = new Element(item, null, head);
         
         if(head == null) { temp = tail; }
@@ -56,7 +55,7 @@ public class ListaDuplamenteEncadeadaParametrizada<T> {
         head = temp;
     }
     
-    public void inserirFim(T item) {
+    public void inserirFim(Object item) {
         Element temp = new Element(item, tail, null);
         
         if(head == null) { head = temp; }

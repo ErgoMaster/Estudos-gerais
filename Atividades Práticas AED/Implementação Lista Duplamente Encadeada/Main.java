@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("--- Testes da lista duplamente encadeada ---\n");
 
-        ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
+        ListaDupla lista = new ListaDupla();
 
         // Inserir um elemento no inicio da lista
         lista.inserirInicio(5);
