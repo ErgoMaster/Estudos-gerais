@@ -1,4 +1,4 @@
-public class PilhaEncadeada implements PilhaInterface {
+public class PilhaEncadeada {
     private ListaEncadeada lista;
     private int count;
     
@@ -7,22 +7,18 @@ public class PilhaEncadeada implements PilhaInterface {
         count = 0;
     }
     
-    @Override
     public void fazVazia() {
         lista.fazVazia();
         count = 0;
     }
     
-    @Override
     public boolean estaVazia() { return (count == 0); }
     
-    @Override
     public void push(Object item) {
         lista.inserirInicio(item);
         count++;
     }
     
-    @Override
     public Object pop() throws CountVazioException {
         if(estaVazia()) { throw new CountVazioException(); }
         
@@ -37,7 +33,6 @@ public class PilhaEncadeada implements PilhaInterface {
         }
     }
     
-    @Override
     public Object getTop() throws CountVazioException {
         if(estaVazia()) { throw new CountVazioException(); }
         
@@ -48,7 +43,6 @@ public class PilhaEncadeada implements PilhaInterface {
         }
     }
     
-    @Override
     public void imprimirPilha() {
         lista.imprimirLista();
     }

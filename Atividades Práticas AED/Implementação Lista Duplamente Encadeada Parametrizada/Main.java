@@ -5,9 +5,9 @@ public class Main {
         ListaParametrizada<Integer> lista = new ListaParametrizada<Integer>();
 
         // Inserir um elemento no inicio da lista
+        lista.inserirInicio(5);
+        lista.inserirInicio(10);
         lista.inserirInicio(9);
-        lista.inserirInicio(13);
-        lista.inserirInicio(14);
 
         System.out.println("-- INSERIR INICIO --");
         lista.imprimirLista(); // Lista: 9 - 10 - 5

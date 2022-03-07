@@ -50,7 +50,7 @@ public class ListaParametrizada<T> {
     public void inserirInicio(T item) {
         Element temp = new Element(item, null, head);
         
-        if(head == null) { temp = tail; }
+        if(head == null) { tail = temp; }
         else { head.prev = temp; }
         
         head = temp;

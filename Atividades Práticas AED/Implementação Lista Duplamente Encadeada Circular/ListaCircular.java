@@ -1,10 +1,8 @@
-import ListaDupla.Element;
-
 public class ListaCircular<T> {
     private Element head;
     private int count;
     
-    public ListaParametrizada() {}
+    public ListaCircular() {}
     
     public final class Element {
         T data;
@@ -18,11 +16,19 @@ public class ListaCircular<T> {
         }
         
         public void inserirDepois(T item) {
-            
+            Element temp = new Element(item, this, this.next);
+
+            this.next = temp;
+            this.next.prev = temp;
         }
 
         public void inserirAntes(T item) {
+            Element temp = new Element(item, this.prev, this);
+
+            if(this == head) { head = temp; }
             
+            this.prev.next = temp;
+            this.prev = temp;
         }
     }
     
@@ -40,13 +46,53 @@ public class ListaCircular<T> {
         else { return head.prev.data; }
     }
      
-    public void inserir(T item) {
-        Element temp = new Element(item, head.prev, head);
+    public void inserirInicio(T item) {
+        switch(count) {
+            case 0: {
+                Element temp = new Element(item, null, null);
+                head = temp;
+                break;
+            }
+            case 1: {
+                Element temp = new Element(item, head, head);
+                head.prev = temp;
+                head.next = temp;
+                head = temp;
+                break;
+            }
+            default: {
+                Element temp = new Element(item, head.prev, head);
+                head.prev.next = temp;
+                head.prev = temp;
+                head = temp;
+                break;
+            }
+        }
+        
+        count++;
+    }
 
-        head.prev.next = temp;
-        head.prev = temp;
-
-        head = temp;
+    public void inserirFim(T item) {
+        switch(count) {
+            case 0: {
+                Element temp = new Element(item, null, null);
+                head = temp;
+                break;
+            }
+            case 1: {
+                Element temp = new Element(item, head, head);
+                head.prev = temp;
+                head.next = temp;
+                break;
+            }
+            default: {
+                Element temp = new Element(item, head.prev, head);
+                head.prev.next = temp;
+                head.prev = temp;
+                break;
+            }
+        }
+        
         count++;
     }
     
@@ -68,12 +114,14 @@ public class ListaCircular<T> {
             (ponteiro.prev).next = ponteiro.next;
             (ponteiro.next).prev = ponteiro.prev;
         }
+
+        count--;
     }
    
     public void imprimirLista() {
         Element temp = head;
 
-        while(temp != null) {
+        for(int i = 0; i < count; i++) {
             System.out.println(temp.data);
             temp = temp.next;
         }
