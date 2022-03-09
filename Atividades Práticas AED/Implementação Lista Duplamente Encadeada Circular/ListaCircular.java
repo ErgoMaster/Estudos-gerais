@@ -105,7 +105,7 @@ public class ListaCircular<T> {
             aux++;
         }
         
-        if(ponteiro == null && aux == count) { throw new ObjetoNaoEncontradoException(); }
+        if(aux == count) { throw new ObjetoNaoEncontradoException(); }
         
         if(ponteiro == head) {
             head = ponteiro.next;
