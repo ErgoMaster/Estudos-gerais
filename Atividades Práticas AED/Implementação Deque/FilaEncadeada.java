@@ -1,4 +1,4 @@
-public class FilaEncadeada implements FilaInterface {
+public class FilaEncadeada {
     private ListaEncadeada list;
 
     public FilaEncadeada() {
@@ -11,18 +11,15 @@ public class FilaEncadeada implements FilaInterface {
 
     public boolean estaVazia() { return (list.estaVazia()); }
 
-    @Override
     public Object getPrimeiro() throws CountVazioException { 
         try { return list.getPrimeiro(); }
         catch(ListaVaziaException e) { throw new CountVazioException(); }
     }
 
-    @Override
     public void enfileirar(Object item) {  
         list.inserirFim(item); 
     }
 
-    @Override
     public Object desenfileirar() throws CountVazioException {
         try { 
             Object obj = list.getPrimeiro();

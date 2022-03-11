@@ -10,7 +10,7 @@ public class Main {
         pilha.push(9);
 
         System.out.println("-- INSERIR ELEMENTOS --");
-        pilha.imprimirPilha(); // Pilha: 9 - 10 - 5
+        System.out.println(pilha); // Pilha: 9 - 10 - 5
 
         // Imprimir o topo da pilha
         try {
@@ -30,6 +30,6 @@ public class Main {
 
         // Imprimir a pilha após o comando pop
         System.out.println("-- PILHA APÓS O POP --");
-        pilha.imprimirPilha();
+        System.out.println(pilha);
     }
 }

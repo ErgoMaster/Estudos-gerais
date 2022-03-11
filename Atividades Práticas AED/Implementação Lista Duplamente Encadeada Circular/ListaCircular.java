@@ -14,6 +14,8 @@ public class ListaCircular<T> {
             this.prev = prev;
             this.next = next;
         }
+
+        public Object getData() { return data; }
         
         public void inserirDepois(T item) {
             Element temp = new Element(item, this, this.next);
@@ -117,7 +119,31 @@ public class ListaCircular<T> {
 
         count--;
     }
-   
+    
+    @Override
+    public String toString() {
+        Element temp = head;
+        String lista = "[";
+
+        if(estaVazia()) { 
+            lista += " ]"; 
+            return lista;
+        } else {
+            for(int i = 0; i < count; i++) {
+                if(temp !=  head.prev) {
+                    lista += temp.getData() + " ,";
+                    temp = temp.next;
+                } else {
+                    lista += temp.getData();
+                }
+            }
+
+            lista += "]";
+        }
+
+        return lista;
+    }
+
     public void imprimirLista() {
         Element temp = head;
 

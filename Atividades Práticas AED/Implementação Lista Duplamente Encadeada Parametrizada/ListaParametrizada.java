@@ -15,6 +15,8 @@ public class ListaParametrizada<T> {
             this.next = next;
         }
         
+        public Object getData() { return data; }
+        
         public void inserirDepois(T item) {
             Element temp = new Element(item, this, next);
             next = temp;
@@ -88,12 +90,25 @@ public class ListaParametrizada<T> {
         }
     }
    
-    public void imprimirLista() {
+    @Override
+    public String toString() {
         Element temp = head;
+        String lista = "[";
 
-        while(temp != null) {
-            System.out.println(temp.data);
-            temp = temp.next;
+        if(estaVazia()) { 
+            lista += " ]"; 
+            return lista;
+        } else {
+            while(temp != null) {
+                if(temp != tail) { lista = lista + temp.getData() + ", "; } 
+                else { lista += temp.getData(); } 
+                
+                temp = temp.next;
+            }
+
+            lista += "]";
         }
+
+        return lista;
     }
 }
