@@ -9,12 +9,10 @@ public class Vetor {
     public Vetor() { this(0,0); }
     public Vetor(int tamanho) { this(tamanho, 0); }
 
-    // Métodos get:
     public Object getData() { return data; }
     public int getBase() { return base; }
     public int getlength() { return data.length; }
 
-    // Método para atribuir os valores de um array "a" para um array qualquer:
     public void assing(Vetor a) {
         if(a != this) {
             if(data.length != a.data.length) {
@@ -29,12 +27,9 @@ public class Vetor {
         }
     }
 
-    // Método para o retorno de um certo elemento dada sua posição no array:
     public Object getElemento(int index) { return data[index - base]; }
-    // Método para mudança do valor de um elemento dada sua posição no array:
     public void setElemento(int index, Object object) { data[index - base] = object; }
 
-    // Métodos para redimensionar o tamanho ou base do array:
     public void setBase(int newBase) { base = newBase; }
     public void setLength(int newLen) {
         if(data.length != newLen) {
