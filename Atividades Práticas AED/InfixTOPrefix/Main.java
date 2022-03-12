@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        InfixToPrefix programa = new InfixToPrefix("(7+2)*1");
+        InfixToPrefix programa = new InfixToPrefix("5+6*4/7");
         programa.operate();
 
         System.out.println("Expressão inicial: " + programa.getExpIn());

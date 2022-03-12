@@ -45,11 +45,21 @@ public class Vetor {
         }
     }
 
-    public void imprimirArray() throws VetorVazioException {
-        if(data.length == 0) { throw new VetorVazioException(); }
 
-        for(int i = 0; i < data.length; i++) {
-            System.out.println(this.getElemento(i));
+    @Override 
+    public String toString() {
+        String vetor = "[";
+
+        if(data.length == 0) { vetor += " ]"; }
+        else {
+            for(int i = 0; i < data.length; i++) {
+                if(i != data.length - 1) { vetor += this.getElemento(i) + " ,"; }
+                else { vetor += this.getElemento(i); } 
+            }
+
+            vetor += "]";
         }
+
+        return vetor;
     }
 }

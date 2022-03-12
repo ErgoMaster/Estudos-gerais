@@ -8,11 +8,7 @@ public class Main {
         vetor.setElemento(3, 27);
         vetor.setElemento(4, 40);
 
-        try {
-            vetor.imprimirArray();
-        } catch (VetorVazioException e) {
-            System.out.println("Vetor vazio");
-        }
+        System.out.println(vetor);
         
         System.out.println("\n" + vetor.getElemento(2)); // return 13 
 
@@ -24,15 +20,11 @@ public class Main {
         vetor1.setElemento(3, 38);
         vetor1.setElemento(4, 51);
 
-        try {
-            System.out.println("-- Vetor1 antes da atribuição --");
-            vetor1.imprimirArray();
+        System.out.println("-- Vetor1 antes da atribuição --");
+        System.out.println(vetor);
 
-            vetor1.assing(vetor);
-            System.out.println("-- Vetor1 depois da atribuição --");
-            vetor1.imprimirArray();
-        } catch (VetorVazioException e) {
-            System.out.println("Vetor vazio");
-        }
+        vetor1.assing(vetor);
+        System.out.println("-- Vetor1 depois da atribuição --");
+        System.out.println(vetor1);
     }
 }

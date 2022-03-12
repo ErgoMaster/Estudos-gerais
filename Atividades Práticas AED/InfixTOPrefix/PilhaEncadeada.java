@@ -43,7 +43,6 @@ public class PilhaEncadeada {
         }
     }
     
-    public void imprimirPilha() {
-        lista.imprimirLista();
-    }
+    @Override
+    public String toString() { return lista.toString(); }
 }

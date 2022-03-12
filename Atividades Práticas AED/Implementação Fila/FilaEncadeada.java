@@ -5,9 +5,7 @@ public class FilaEncadeada implements FilaInterface {
         list = new ListaEncadeada();
     }
 
-    public void fazVazia() { 
-        list.fazVazia(); 
-    }
+    public void fazVazia() {  list.fazVazia(); }
 
     public boolean estaVazia() { return (list.estaVazia()); }
 
@@ -18,9 +16,7 @@ public class FilaEncadeada implements FilaInterface {
     }
 
     @Override
-    public void enfileirar(Object item) {  
-        list.inserirFim(item); 
-    }
+    public void enfileirar(Object item) { list.inserirFim(item); }
 
     @Override
     public Object desenfileirar() throws CountVazioException {
