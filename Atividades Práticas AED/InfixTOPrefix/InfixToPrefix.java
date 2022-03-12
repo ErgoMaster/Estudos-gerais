@@ -8,7 +8,7 @@ public class InfixToPrefix {
     public void operate() {
         char c, cPop;
 
-        for(int i = expIn.length() - 1; i <= 0; i--) {
+        for(int i = expIn.length() - 1; i >= 0; i--) {
             c = expIn.charAt(i);
 
             if(ehDigito(c)) { expOut = c + expOut; }
