@@ -1,10 +1,10 @@
-public class InfixToPosfix {
+public class InfixToPostfix {
     private PilhaEncadeada stack = new PilhaEncadeada();
     private String expIn;
     private String expOut = "";
     private Object resultado;
 
-    public InfixToPosfix(String expIn) { this.expIn = expIn; }
+    public InfixToPostfix(String expIn) { this.expIn = expIn; }
 
     public void operate() {
         char c, cPop;
@@ -91,6 +91,7 @@ public class InfixToPosfix {
             case "+": { return numero1 + numero2; }
             case "-": { return numero1 - numero2; }
             case "*": { return numero1 * numero2; }
+            case "$": { return (int) Math.pow(numero1, numero2); }
             default: { return numero1 / numero2; }
         }
     }
