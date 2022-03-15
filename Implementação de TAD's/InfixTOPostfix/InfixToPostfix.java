@@ -82,7 +82,7 @@ public class InfixToPostfix {
             }
         }
 
-        try { resultado = stack.pop(); } 
+        try { resultado = (int) stack.pop(); } 
         catch(CountVazioException e) { System.out.println("ERRO"); }
     }
 
