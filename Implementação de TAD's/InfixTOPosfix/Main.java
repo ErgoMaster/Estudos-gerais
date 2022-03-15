@@ -1,9 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        InfixToPosfix programa = new InfixToPosfix("5+6*4/7");
-        programa.operate();
+        InfixToPosfix programa = new InfixToPosfix("5+((4*3)/2)");
 
-        System.out.println("Expressão inicial: " + programa.getExpIn());
-        System.out.println("Expressão pósfixa: " + programa.getExpOut());
+        System.out.println(programa);
     }
 }
