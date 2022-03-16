@@ -24,7 +24,7 @@ public class Vetor {
 
         for(int i = 0; i < getlength(); i++) {
             if(data[i] == null) { resultado = true; } 
-            else { resultado = false; }
+            else { return false; }
         }
 
         return resultado;

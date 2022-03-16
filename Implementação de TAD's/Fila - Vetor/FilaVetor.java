@@ -1,5 +1,6 @@
 public class FilaVetor implements FilaInterface {
-    Vetor vetor;
+    private Vetor vetor;
+    private int count;
 
     public FilaVetor(int tamanho) {
         vetor = new Vetor(tamanho);
@@ -15,14 +16,18 @@ public class FilaVetor implements FilaInterface {
     public Object getPrimeiro() { return vetor.getElemento(0); }
 
     @Override
-    public void enfileirar(Object item) {
+    public void enfileirar(Object item) throws CountCheioException {
         int index = 0;
 
-        while(vetor.getElemento(index) != null) {
-            index++;
-        }
+        if(count == vetor.getlength()) { throw new CountCheioException(); } 
+        else {
+            while(vetor.getElemento(index) != null) {
+                index++;
+            }
 
-        vetor.setElemento(index, item);
+            vetor.setElemento(index, item);
+            count++;
+        }
     }
 
     @Override
@@ -34,6 +39,7 @@ public class FilaVetor implements FilaInterface {
             else { vetor.setElemento(i, vetor.getElemento(i + 1)); }
         }
 
+        count--;
         return elemento;
     }
 
