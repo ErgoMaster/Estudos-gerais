@@ -1,58 +1,38 @@
-public class DequeEncadeado implements DequeInterface {
-    
+public class DequeEncadeado extends FilaEncadeada implements DequeInterface {
+    public DequeEncadeado() {
+        super();
+    }
+
+    public void fazVazia() { this.fazVazia(); }
+
+    public boolean estaVazia() { return this.estaVazia(); }
+
+    public Object getPrimeiro() { return this.getPrimeiro(); }
 
     @Override
-    public void fazVazia() {
-        
+    public Object getUltimo() throws CountVazioException {
+        try { return this.list.getUltimo(); }
+        catch(Exception e) { throw new CountVazioException(); }
     }
 
     @Override
-    public boolean estaVazia() {
-        return false;
+    public void enfileirarInicio(Object item) { this.list.inserirInicio(item); }
+
+    @Override
+    public void enfileirarFim(Object item) { this.enfileirar(item); }
+
+    @Override
+    public Object desenfileirarInicio() throws CountVazioException { return this.desenfileirar(); }
+
+    @Override
+    public Object desenfileirarFim() throws CountVazioException {
+        try {
+            Object temp = this.list.getUltimo();
+            this.list.extrair(temp);
+            return temp;
+        } catch (Exception e) { throw new CountVazioException(); }
     }
 
     @Override
-    public Object getPrimeiro() {
-        return null;
-    }
-
-    @Override
-    public void enfileirar(Object item) {
-        
-    }
-
-    @Override
-    public Object desenfileirar() throws CountVazioException {
-        return null;
-    }
-
-    @Override
-    public Object getUltimo() {
-        return null;
-    }
-
-    @Override
-    public void enfileirarInicio(Object item) {
-        
-    }
-
-    @Override
-    public void enfileirarFim(Object item) {
-        
-    }
-
-    @Override
-    public Object desenfileirarInicio() {
-        return null;
-    }
-
-    @Override
-    public Object desenfileirarFim() {
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return "";
-    }
+    public String toString() { return this.toString(); }
 }

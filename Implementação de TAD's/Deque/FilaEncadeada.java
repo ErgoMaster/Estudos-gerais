@@ -1,5 +1,5 @@
 public class FilaEncadeada {
-    private ListaEncadeada list;
+    protected ListaEncadeada list;
 
     public FilaEncadeada() {
         list = new ListaEncadeada();
