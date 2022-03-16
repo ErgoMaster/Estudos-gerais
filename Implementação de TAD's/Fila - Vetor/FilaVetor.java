@@ -4,6 +4,7 @@ public class FilaVetor implements FilaInterface {
 
     public FilaVetor(int tamanho) {
         vetor = new Vetor(tamanho);
+        count = 0;
     }
 
     @Override

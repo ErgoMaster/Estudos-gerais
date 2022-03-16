@@ -3,11 +3,13 @@ public class Main {
         FilaVetor fila = new FilaVetor(5);
 
         // Enfileirar elementos na fila
-        fila.enfileirar(4);
-        fila.enfileirar(6);
-        fila.enfileirar(8);
-        fila.enfileirar(10);
-        fila.enfileirar(12);
+        try {
+            fila.enfileirar(4);
+            fila.enfileirar(6);
+            fila.enfileirar(8);
+            fila.enfileirar(10);
+            fila.enfileirar(12);
+        } catch (CountCheioException e) { System.out.println("PILHA CHEIA"); }
 
         System.out.println("-- ENFILEIRAR ELEMENTOS --");
         System.out.println(fila); // Fila: 4 - 6 - 8 - 10 - 12
