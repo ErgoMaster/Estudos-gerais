@@ -1,72 +1,104 @@
 public class ListaClassificada implements ListaClassificadaInterface {
-    protected Object[] array;
+    protected int[] array;
     protected int count;
 
     public ListaClassificada(int tamanho) {
-        array = new Object[tamanho];
+        array = new int[tamanho];
         count = 0;
     }
 
     @Override
-    public Object get(int i) {
-        return null;
+    public int get(int i) throws IndexOutOfBoundsException {
+        if(i >= count || i < 0) { throw new IndexOutOfBoundsException(); }
+
+        return array[i];
     }
 
     @Override
-    public Cursor procurarPosicao(Object item) {
-        return null;
+    public Cursor procurarPosicao(int item) throws ObjetoNaoEncontradoException {
+        int index = 0;
+
+        while(index < count && array[index] < item) {
+            index++;
+        }
+
+        if(index == count - 1) { throw new ObjetoNaoEncontradoException(); }
+
+        return new Cursor(index, array.length);
     }
 
     @Override
-    public boolean eMembro(Object item) {
-        for(int i = 0; i < array.length; i++) {
-            if(item == array[i]) {
-                return true;
-            }
+    public boolean eMembro(int item) {
+        int inicio = 0;
+        int fim = count - 1;
+        int meio;
+
+        while(inicio <= fim) {
+            meio = ((inicio + fim) / 2);
+
+            if(array[meio] > item) { fim = meio - 1; } 
+            else if(array[meio] < item) { inicio = meio + 1; } 
+            else { return true; }
         }
 
         return false;
     }
 
     @Override
-    public void inserir(Object item) throws CountCheioException {
+    public void inserir(int item) throws CountCheioException {
+        int index = 0;
+
         if(count == array.length) { throw new CountCheioException(); } 
-        else {
-            array[count] = item;
-            count++;
+
+        while(array[index] != 0 && array[index] < item) {
+            index++;
         }
+ 
+        for(int i = count; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        
+        array[index] = item;
+        count++;
     }
 
     @Override
-    public void remover(Object item) throws ObjetoNaoEncontradoException {
-        int aux = 0;
+    public void remover(int item) throws ObjetoNaoEncontradoException, CountVazioException {
+        int index = 0;
 
-        while(aux <= count && array[aux] != item) {
-            aux++;
+        if(count == 0) { throw new CountVazioException(); }
+
+        while(array[index] != 0 && array[index] < item) {
+            index++;
         }
 
-        if(aux == count) { throw new ObjetoNaoEncontradoException(); }
-        else {
-            int i; 
+        for(int i = index; i < count - 1; i ++) {
+            array[i] = array[i + 1];
+        }
 
-            for(i = aux; i < count - 1; i++) {
-                array[i] = array[i + 1];
-            }
-
-            array[i] = null;
-            count--;
-        } 
+        array[count - 1] = 0;
+        count--;
     }
 
     @Override
-    public Object procurar(Object item) {
-        for(int i = 0; i < array.length; i++) {
-            if(item == array[i]) {
-                return array[i];
+    public int procurar(int item) throws ObjetoNaoEncontradoException {
+        int inicio = 0;
+        int fim = count - 1;
+        int meio;
+
+        while(inicio <= fim) {
+            meio = ((inicio + fim) / 2);
+
+            if(array[meio] > item) {
+                fim = meio - 1;
+            } else if(array[meio] < item) {
+                inicio = meio + 1;
+            } else {
+                return meio;
             }
         }
 
-        return null;
+        throw new ObjetoNaoEncontradoException();
     }
 
     @Override
@@ -74,13 +106,13 @@ public class ListaClassificada implements ListaClassificadaInterface {
         String texto = "";
         texto += "[";
 
-        if(array[0] == null) { return "[ ]"; }
+        if(count == 0) { return "[ ]"; }
 
         for(int i = 0; i < array.length; i++) {
-            if(i != array.length) { texto += array[i] + ", "; } 
-            else { texto += array[i] + "]"; }
+            if(i != array.length - 1) { texto += array[i] + ", "; } 
+            else { texto += array[i]; }
         }
 
-        return texto;
+        return texto + "]";
     }
 }

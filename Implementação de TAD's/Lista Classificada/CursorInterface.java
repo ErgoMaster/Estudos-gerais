@@ -1,6 +1,6 @@
 public interface CursorInterface {
-    Object getDado() throws IndexOutOfBoundsException;
-    void inserirDepois (Object o);
-    void inserirAntes (Object o) throws CountCheioException, IndexOutOfBoundsException;
-    void remover();
+    int getDado() throws IndexOutOfBoundsException;
+    void inserirDepois (int o) throws CountCheioException, IndexOutOfBoundsException;
+    void inserirAntes (int o) throws CountCheioException, IndexOutOfBoundsException;
+    void remover() throws CountVazioException, IndexOutOfBoundsException;
 }
