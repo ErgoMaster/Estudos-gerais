@@ -18,7 +18,7 @@ public class InfixToPostfix {
                     while(!stack.estaVazia() && prioridade((char)stack.getTop()) >= prioridade(c)) {
                         expOut = expOut + (char) stack.pop();
                     }
-                } catch (Exception e) { System.out.println("ERRO"); }
+                } catch(Exception e) { System.out.println("ERRO"); }
                 
                 stack.push(c);
             }
@@ -29,14 +29,14 @@ public class InfixToPostfix {
                         cPop = (char) stack.pop();
                         if(cPop != '(') { expOut = expOut + cPop; }
                     } while(cPop != '(');
-                } catch (Exception e) { System.out.println("ERRO"); }
+                } catch(Exception e) { System.out.println("ERRO"); }
             }
             else { }
         }
 
         while(!stack.estaVazia()) {
             try { expOut = expOut + (char) stack.pop(); } 
-            catch (Exception e) { System.out.println("ERRO"); }
+            catch(Exception e) { System.out.println("ERRO"); }
         }
     }
 
