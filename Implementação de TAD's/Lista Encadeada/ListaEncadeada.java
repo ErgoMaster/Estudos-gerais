@@ -50,12 +50,14 @@ public class ListaEncadeada {
     
     public Object getPrimeiro() throws ListaVaziaException {
         if(estaVazia()) { throw new ListaVaziaException(); }
-        else { return head.data; }
+        
+        return head.data;
     }
 
     public Object getUltimo() throws ListaVaziaException {
         if(estaVazia()) { throw new ListaVaziaException(); }
-        else { return tail.data; }
+        
+        return tail.data;
     }
     
     public void inserirInicio(Object item) {
