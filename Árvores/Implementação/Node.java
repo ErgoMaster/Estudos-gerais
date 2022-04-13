@@ -1,3 +1,8 @@
+import java.util.Stack;
+
+import FilaEncadeada.CountVazioException;
+import FilaEncadeada.FilaEncadeada;
+
 public class Node<T> {
     private T valor;
     private Node<T> filho_esq, filho_dir;
@@ -54,5 +59,127 @@ public class Node<T> {
         System.out.print(this.getValor() + " ");
 
         if(this.getFilhoEsq() != null) { this.getFilhoEsq().imprimeOrdemDecrescente(); }
+    }
+
+    protected void imprimeEmPreOrdem() {
+        System.out.print(this.getValor() + " ");
+
+        if(this.getFilhoEsq() != null) { this.getFilhoEsq().imprimeEmPreOrdem(); }
+        if(this.getFilhoDir() != null) { this.getFilhoDir().imprimeEmPreOrdem(); }
+    }
+
+    protected void imprimeEmPosOrdem() {
+        if(this.getFilhoEsq() != null) { this.getFilhoEsq().imprimeEmPosOrdem(); }
+        if(this.getFilhoDir() != null) { this.getFilhoDir().imprimeEmPosOrdem(); }
+
+        System.out.print(this.getValor() + " ");
+    }
+
+    protected void imprimeEmLargura() {
+        FilaEncadeada fila = new FilaEncadeada();
+        fila.enfileirar(this);
+
+        while(!fila.estaVazia()) {
+            Node<T> node = null;
+            try { node = (Node<T>) fila.desenfileirar(); } 
+            catch (CountVazioException e) { e.printStackTrace(); }
+            
+
+            if(node.getFilhoEsq() != null) { fila.enfileirar(node.getFilhoEsq()); }
+            if(node.getFilhoDir() != null) { fila.enfileirar(node.getFilhoDir()); }
+
+            System.out.print(node.getValor() + " ");
+        }
+    }
+
+    protected void imprimeEmLarguraRecursivo() {
+        FilaEncadeada fila = new FilaEncadeada();
+        fila.enfileirar(this);
+        imprimeEmLarguraRecursivo(fila);
+    }
+
+    private void imprimeEmLarguraRecursivo(FilaEncadeada fila) {
+        Node<T> node = null;
+        try { node = (Node<T>) fila.desenfileirar(); } 
+        catch (CountVazioException e) { e.printStackTrace(); }
+
+        if(node.getFilhoEsq() != null) { fila.enfileirar(node.getFilhoEsq()); }
+        if(node.getFilhoDir() != null) { fila.enfileirar(node.getFilhoDir()); }
+
+        System.out.print(node.getValor() + " ");
+
+        if(!fila.estaVazia()) {
+            this.imprimeEmLarguraRecursivo(fila);
+        }
+    }
+
+    protected void imprimeEmLarguraInvertido() {
+        FilaEncadeada fila = new FilaEncadeada();
+        Stack<T> pilha = new Stack<T>();
+
+        fila.enfileirar(this);
+
+        while(!fila.estaVazia()) {
+            Node<T> node = null;
+            try { node = (Node<T>) fila.desenfileirar(); } 
+            catch (CountVazioException e) { e.printStackTrace(); }
+
+            if(node.getFilhoEsq() != null) { fila.enfileirar(node.getFilhoEsq()); }
+            if(node.getFilhoDir() != null) { fila.enfileirar(node.getFilhoDir()); }
+
+            pilha.push(node.getValor());
+        }
+
+        imprimePilha(pilha);
+    }
+
+    private void imprimePilha(Stack<T> pilha) {
+        while(!pilha.empty()) {
+            System.out.print(pilha.pop() + " ");
+        }
+    }
+
+    protected int calcularAltura() {
+        int alturaFilhoEsquerda = 0;
+        int alturaFilhoDireita = 0;
+
+        if(this.getFilhoEsq() != null) { alturaFilhoEsquerda = this.getFilhoEsq().calcularAltura() + 1; }
+        if(this.getFilhoDir() != null) { alturaFilhoDireita = this.getFilhoDir().calcularAltura() + 1; }
+
+        if(alturaFilhoEsquerda > alturaFilhoDireita) { return alturaFilhoEsquerda; }
+        else { return alturaFilhoDireita; }
+    }
+
+    protected int calcularAlturaEmLargura() {
+        FilaEncadeada filaObjetos = new FilaEncadeada();
+        FilaEncadeada filaDistancias = new FilaEncadeada();
+
+        filaObjetos.enfileirar(this);
+        filaDistancias.enfileirar(0);
+
+        int alturaMaxima = 0;
+
+        while(!filaObjetos.estaVazia()) {
+            Node<T> node = null;
+            try { node = (Node<T>) filaObjetos.desenfileirar(); } 
+            catch (CountVazioException e) { e.printStackTrace(); }
+
+            int distanciaPai = 0;
+            try { distanciaPai = (int) filaDistancias.desenfileirar(); } 
+            catch (CountVazioException e) { e.printStackTrace(); }
+
+            if(node.getFilhoEsq() != null) {
+                filaObjetos.enfileirar(node.getFilhoEsq());
+                filaDistancias.enfileirar(distanciaPai + 1);
+            }
+            if(node.getFilhoDir() != null) {
+                filaObjetos.enfileirar(node.getFilhoDir());
+                filaDistancias.enfileirar(distanciaPai + 1);
+            } 
+
+            if(distanciaPai > alturaMaxima) { alturaMaxima = distanciaPai; }
+        }
+
+        return alturaMaxima;
     }
 }
