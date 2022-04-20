@@ -1,5 +1,4 @@
 import java.util.Stack;
-
 import FilaEncadeada.CountVazioException;
 import FilaEncadeada.FilaEncadeada;
 
@@ -182,4 +181,85 @@ public class Node<T> {
 
         return alturaMaxima;
     }
+
+    protected Node<T> pesquisarValor(T valor) {
+        int comparacao = valor.toString().compareTo(this.getValor().toString());
+        Node<T> temp;
+
+        if(comparacao < 0) {
+            if(this.getFilhoEsq() != null) { temp = this.getFilhoEsq().pesquisarValor(valor); } 
+            else { temp = null; }
+        } else if(comparacao > 0) {
+            if(this.getFilhoDir() != null) { temp = this.getFilhoDir().pesquisarValor(valor); } 
+            else { temp = null; }
+        } else {
+            temp = this;
+        }
+
+        if(temp == null) { temp = (Node<T>) new Node<Integer>(-1); }
+
+        return temp;
+    }
+
+    protected int calcularNumeroNodesFolhas() {
+        int totalEsq = 0;
+        int totalDir = 0;
+        boolean ehFolha = true;
+
+        if(this.getFilhoEsq() != null) { 
+            totalEsq = this.getFilhoEsq().calcularNumeroNodesFolhas(); 
+            ehFolha = false;
+        }
+        if(this.getFilhoDir() != null) { 
+            totalDir = this.getFilhoDir().calcularNumeroNodesFolhas(); 
+            ehFolha = false;
+        }
+
+        if(ehFolha) { return 1; }
+        else { return (totalDir + totalEsq); }
+    }
+
+    protected boolean removerNode(T valor, Node<T> nodePai) {
+        boolean resultado = false;
+        int comparacao = valor.toString().compareTo(this.getValor().toString());
+        
+        if(comparacao < 0) {
+            if(this.getFilhoEsq() != null) { return this.getFilhoEsq().removerNode(valor, this); } 
+            else { resultado = false; }
+        }
+        if(comparacao > 0) {
+            if(this.getFilhoDir() != null) { return this.getFilhoDir().removerNode(valor, this); } 
+            else { resultado = false; }
+        } else {
+
+        }
+
+
+        return resultado;
+    }
+
+    private void setFilhoNode(Node<T> nodePai, Node<T> novoNode) {
+        if(nodePai.getFilhoEsq() == this) { nodePai.setFilhoEsq(novoNode); }
+        if(nodePai.getFilhoDir() == this) { nodePai.setFilhoDir(novoNode); }
+    }
+
+    private Node<T> nodeComMaiorValor() {
+        if(this.getFilhoDir() != null) { return this.getFilhoDir().nodeComMaiorValor(); } 
+        else { return this; }
+    }
+
+    private Node<T> nodeComMenorValor() {
+        if(this.getFilhoEsq() != null) { return this.getFilhoEsq().nodeComMenorValor(); } 
+        else { return this; }
+    }
+
+    private Node<T> acharPai(Node<T> nodeFilho) {
+        if(this.getFilhoEsq() == nodeFilho || this.getFilhoDir() == nodeFilho) { 
+            return this; 
+        } else {
+            if(nodeFilho.getValor().toString().compareTo(this.getValor().toString()) > 0) {
+                
+            }
+        }
+    } 
 }

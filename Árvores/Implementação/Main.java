@@ -1,5 +1,3 @@
-import FilaEncadeada.CountVazioException;
-
 public class Main {
     public static void main(String[] args) {
         Node<Integer> raiz = new Node<Integer>(6);
@@ -9,6 +7,8 @@ public class Main {
         raiz.inserirNodeOrdenado(3);
         raiz.inserirNodeOrdenado(8);
         raiz.inserirNodeOrdenado(1);
+        raiz.inserirNodeOrdenado(15);
+        raiz.inserirNodeOrdenado(7);
 
         // Teste da arvore em ordem crescente
         System.out.println("-- ORDEM CRESCENTE --");
@@ -54,5 +54,16 @@ public class Main {
         System.out.println("-- ALTURA DA ARVORE EM LARGURA --");
         System.out.println("Altura: " + raiz.calcularAlturaEmLargura());
         System.out.println("\n");
+
+        // Pesquisar um valor dentro da arvore
+        System.out.println("-- PESQUEISAR VALOR --");
+        System.out.println("Pesquisa 2 (não tem): " + raiz.pesquisarValor(2).getValor()); // -1
+        System.out.println("Pesquisa 3 (tem): " + raiz.pesquisarValor(3).getValor()); // 3
+        System.out.print("\n");
+
+        // Verificar a quantidade de nos folhas que a arvore possui
+        System.out.println("-- NÚMERO DE NÓS FOLHAS --");
+        System.out.print("Total: " + raiz.calcularNumeroNodesFolhas());
+        System.out.print("\n");
     }
 }
