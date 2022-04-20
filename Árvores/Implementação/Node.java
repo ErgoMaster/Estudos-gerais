@@ -231,9 +231,28 @@ public class Node<T> {
             if(this.getFilhoDir() != null) { return this.getFilhoDir().removerNode(valor, this); } 
             else { resultado = false; }
         } else {
+            if (this.getFilhoEsq() == null && this.getFilhoDir() == null) {
+                this.setFilhoNode(nodePai, null);
+                resultado = true;
+            } else if(this.getFilhoEsq() != null && this.getFilhoDir() == null) {
+                this.setFilhoNode(nodePai, this.getFilhoEsq());   
+				resultado = true;
+            } else if(this.getFilhoEsq() == null && this.getFilhoDir() != null) {
+                this.setFilhoNode(nodePai, this.getFilhoDir()); 
+			    resultado = true;  
+            } else {
+                Node<T> menorNodeDir = this.getFilhoDir().nodeComMenorValor(); 
+                Node<T> paiMenorNodeDir;
 
+                if(menorNodeDir != this.getFilhoDir()) {  paiMenorNodeDir = this.getFilhoDir().acharPai(menorNodeDir); } 
+                else { paiMenorNodeDir=this; }
+
+                this.setValor(menorNodeDir.getValor());
+                
+                menorNodeDir.setFilhoNode(paiMenorNodeDir,menorNodeDir.getFilhoDir());  				    
+                resultado = true;
+            }
         }
-
 
         return resultado;
     }
@@ -258,7 +277,11 @@ public class Node<T> {
             return this; 
         } else {
             if(nodeFilho.getValor().toString().compareTo(this.getValor().toString()) > 0) {
-                
+                if(this.getFilhoEsq() != null) { return this.getFilhoEsq().acharPai(nodeFilho); } 
+                else { return null; }
+            } else {
+                if(this.getFilhoDir() != null) { return this.getFilhoDir().acharPai(nodeFilho); } 
+                else { return null; }
             }
         }
     } 
