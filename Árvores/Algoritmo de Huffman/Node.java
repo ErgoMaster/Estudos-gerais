@@ -2,11 +2,16 @@ import java.util.Map;
 
 public class Node implements Comparable<Node> {
     private char data;
-    private int count;
+    private int frequencia = 0;
 
     private Node filhoEsquerda;
     private Node filhoDireita;
 
+    // Contrutores
+    public Node(char data, int frequencia) {
+        this.data = data;
+        this.frequencia = frequencia;
+    }
     public Node(char data) {
         this.data = data;
     }
@@ -16,43 +21,51 @@ public class Node implements Comparable<Node> {
         this.filhoDireita = filhoDireita;
     }
 
-    // Métodos get
-    public char getData() { return data; }
-    public Node getFilhoEsquerda() { return filhoEsquerda; }
-    public Node getFilhoDireita() { return filhoDireita; }
-
-    // Verifica se o node é folha ou não
-    public boolean ehFolha() { return (filhoEsquerda == null && filhoDireita == null); }
-
-    // Retorna a frequência de um node
-    public int getFrequenciaDoNode() {
-        if(this.ehFolha()) {
-            return this.count;
-        } 
-
-        return filhoEsquerda.getFrequenciaDoNode() + filhoDireita.getFrequenciaDoNode();
+    // Incrementa a frequência em 1, usado na hora de criar a tabela de frequências
+    public void aumentarFrequencia() {
+        frequencia++;
     }
 
-    public void add() { count++; }
+    // Verifica se o node é folha ou não
+    public boolean ehFolha() {
+        return (filhoEsquerda == null && filhoDireita == null);
+    }
 
-    @Override
-    public int compareTo(Node node) { return this.getFrequenciaDoNode() - node.getFrequenciaDoNode(); }
-
-    // Cria um code map para guardar os caracteres e seus representativos binarios
-    public void criarCodeMap(Map<Character, String> codemap, String texto) {
-        if(this.ehFolha()) {
-            codemap.put(getData(), texto);
+    // Constrói o code map usando uma busca em profundidade, em que cada caractere terá sua sequência binária correspondente
+    public void construirCodeMap(Map<Character, String> codemap, String codigo) {
+        if(this.ehFolha()) { // Verifica se o node atual é folha
+            // Se for folha, apenas coloca no codemap o seu valor e o codigo gerado até então
+            codemap.put(this.getData(), codigo);
             return;
         }
 
-        this.filhoEsquerda.criarCodeMap(codemap, texto + "0");
-        this.filhoDireita.criarCodeMap(codemap, texto + "1");
+        /* Se não for folha, continua percorrendo pela árvore, percorrendo para a esquerda, 
+        o valor 0 será adicionado ao código, percorrendo para a direita, será o valor 1 */
+        if(this.getFilhoEsquerda() != null) { this.filhoEsquerda.construirCodeMap(codemap, codigo + "0"); }
+        if(this.getFilhoDireita() != null) { this.filhoDireita.construirCodeMap(codemap, codigo + "1"); }
+    } 
+
+    // Métodos get
+    public Node getFilhoEsquerda() { return filhoEsquerda; }
+    public Node getFilhoDireita() { return filhoDireita; }
+    public char getData() { return data; }
+
+    // Retorna a frequência do node
+    public int getFrequencia() {
+        if(this.ehFolha()) { return frequencia; }
+
+        return this.getFilhoEsquerda().getFrequencia() + this.getFilhoDireita().getFrequencia();
+    }
+
+    @Override
+    public int compareTo(Node node) {
+        return this.getFrequencia() - node.getFrequencia();
     }
 
     @Override
     public String toString() {
         String aux = data == '\n' ? "\\n" : "" + data;
 
-        return String.format("'%s': %d", aux, getFrequenciaDoNode());
-    } 
+        return String.format("'%s': %d", aux, this.getFrequencia());
+    }
 }
