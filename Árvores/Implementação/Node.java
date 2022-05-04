@@ -262,11 +262,6 @@ public class Node<T> {
         if(nodePai.getFilhoDir() == this) { nodePai.setFilhoDir(novoNode); }
     }
 
-    private Node<T> nodeComMaiorValor() {
-        if(this.getFilhoDir() != null) { return this.getFilhoDir().nodeComMaiorValor(); } 
-        else { return this; }
-    }
-
     private Node<T> nodeComMenorValor() {
         if(this.getFilhoEsq() != null) { return this.getFilhoEsq().nodeComMenorValor(); } 
         else { return this; }
