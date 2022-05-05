@@ -41,4 +41,9 @@ public class ArvoreAVL<T> {
 
         return resultado;
     }
+
+    // Cosntruir a árvore AVL
+    public void inserirNode(T valor) {
+
+    }
 }

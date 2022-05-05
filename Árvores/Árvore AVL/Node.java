@@ -4,6 +4,7 @@ public class Node<T> {
     private T valor;
     private Node<T> filhoEsquerda;
     private Node<T> filhoDireita;
+    private int balanceamento;
 
     // Construtores
     public Node(T valor) {
@@ -19,11 +20,13 @@ public class Node<T> {
     public T getValor() { return valor; }
     public Node<T> getFilhoEsquerda() { return filhoEsquerda; }
     public Node<T> getFilhoDireita() { return filhoDireita; }
+    public int getBalanceamento() { return balanceamento; }
 
     // Métodos set
     public void setValor(T valor) { this.valor = valor; }
     public void setFilhoEsquerda(Node<T> filhoEsquerda) { this.filhoEsquerda = filhoEsquerda; }
     public void setFilhoDireita(Node<T> filhoDireita) { this.filhoDireita = filhoDireita; }
+    public void setBalanceamento(int balanceamento) { this.balanceamento = balanceamento; }
 
     // Verifica se o node é folha
     public boolean ehFolha() {
@@ -63,25 +66,4 @@ public class Node<T> {
 
         return alturaMaxima;
     }
-
-    // Construir uma árvore binária que não é avl
-    public boolean inserirNodeOrdenado(T valor) {
-        if(valor.toString().compareTo(getValor().toString()) < 0) {
-            if(getFilhoEsquerda() != null) {
-                return this.getFilhoEsquerda().inserirNodeOrdenado(valor);
-            } else {
-                this.setFilhoEsquerda(new Node<T>(valor));
-                return true;
-            }
-        } else {
-            if(getFilhoDireita() != null) {
-                return this.getFilhoDireita().inserirNodeOrdenado(valor);
-            } else {
-                this.setFilhoDireita(new Node<T>(valor));
-                return true;
-            }
-        }
-    }
-
-    // Construir árvore binária que já é avl
 }
