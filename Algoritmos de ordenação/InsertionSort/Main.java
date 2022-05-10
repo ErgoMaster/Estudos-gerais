@@ -1,4 +1,4 @@
-package BubbleSort;
+package InsertionSort;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ public class Main {
         int[] array = generateArray(10);
 
         System.out.println(printArray(array));
-        BubbleSort.sort(0, array.length, array);
+        InsertionSort.sort(0, array.length, array);
         System.out.println("\n" + printArray(array));
     }
 
@@ -22,7 +22,7 @@ public class Main {
 
         return resultado;
     }
-
+    
     private static String printArray(int[] array) {
         String resultado = "[";
 
