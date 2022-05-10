@@ -1,29 +1,15 @@
 package BubbleSort;
 
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
-        int[] array = generateArray(10);
+        int[] array = { 10, 5, 13, 2, 9, 8, 7, 4 };
 
-        System.out.println(printArray(array));
+        System.out.println("Array antes do sort: " + printArray(array) + "\n");
         BubbleSort.sort(0, array.length, array);
-        System.out.println("\n" + printArray(array));
+        System.out.println("\nArray depois do sort: " + printArray(array));
     }
 
-    private static int[] generateArray(int tamanho) {
-        Random rand = new Random();
-        int[] resultado = new int[tamanho];
-
-        for(int i = 0; i < tamanho; i++) {
-            int number = rand.nextInt(25);
-            resultado[i] = number;
-        }
-
-        return resultado;
-    }
-
-    private static String printArray(int[] array) {
+    public static String printArray(int[] array) {
         String resultado = "[";
 
         for(int i = 0; i < array.length; i++) {

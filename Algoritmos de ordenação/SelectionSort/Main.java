@@ -1,10 +1,12 @@
+package SelectionSort;
+
 public class Main {
     public static void main(String[] args) {
         int[] array = { 10, 5, 13, 2, 9, 8, 7, 4 };
 
-        System.out.println(printArray(array) + "\n");
+        System.out.println("Array antes do sort: " + printArray(array) + "\n");
         SelectionSort.sort(0, 8, array);
-        System.out.println(printArray(array));
+        System.out.println("\nArray depois do sort: " + printArray(array));
     }
 
     public static String printArray(int[] array) {

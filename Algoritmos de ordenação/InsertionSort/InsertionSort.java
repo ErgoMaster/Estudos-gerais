@@ -7,8 +7,11 @@ public class InsertionSort {
 
             while(j > 0 && array[j] < array[j - 1]) {
                 change(j, j - 1, array);
+                System.out.println(Main.printArray(array));
                 j--;
             }
+
+            System.out.println();
         }
     }
 
