@@ -9,12 +9,9 @@ public class SelectionSort {
                     menorIndice = j;
                     menorElemento = array[j];
                 }
-
             }
 
             change(i, menorIndice, array);
-            //System.out.println(Main.printArray(array));
-            //System.out.println();
         }
     }
 
